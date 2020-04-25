@@ -29,6 +29,6 @@ dependencies {
 
     compile 'com.android.support:appcompat-v7:${project.supportLibVersion}'
     compile 'com.instapp.nat:media-audio:2.0.0'
-    compile  project(':farwolf.weex')
+    // compile  project(':farwolf.weex')
 compile 'com.github.bmfe:WeexErosFramework:1.0.4'
 }

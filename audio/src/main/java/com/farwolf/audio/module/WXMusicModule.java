@@ -5,10 +5,12 @@ import android.content.Intent;
 import com.farwolf.audio.event.AudioEvent;
 import com.farwolf.audio.service.BackService;
 import com.farwolf.audio.service.MusicService;
-import com.farwolf.weex.annotation.WeexModule;
-import com.farwolf.weex.base.WXModuleBase;
-import com.farwolf.weex.util.Const;
-import com.farwolf.weex.util.Weex;
+// import com.farwolf.weex.annotation.WeexModule;
+import com.alibaba.weex.plugin.annotation.WeexModule;
+import com.taobao.weex.common.WXModule;
+// import com.farwolf.weex.base.WXModuleBase;
+// import com.farwolf.weex.util.Const;
+// import com.farwolf.weex.util.Weex;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 
@@ -20,7 +22,7 @@ import java.util.HashMap;
 import java.util.Timer;
 
 @WeexModule(name = "audio")
-public class WXMusicModule extends WXModuleBase {
+public class WXMusicModule extends WXModule { // WXModuleBase
 
     Timer timer;
     boolean compelete;
@@ -47,11 +49,11 @@ public class WXMusicModule extends WXModuleBase {
 
         String url=param.get("url")+"";
         boolean autoplay=Boolean.valueOf(param.get("autoplay")+"");
-        if(url.startsWith("root")){
-        url=Weex.getRootPath(url,mWXSDKInstance);
-        }else if(url.startsWith(Const.PREFIX_SDCARD)){
-            url=url.replace(Const.PREFIX_SDCARD,"file://");
-        }
+        // if(url.startsWith("root")){
+        // url=Weex.getRootPath(url,mWXSDKInstance);
+        // }else if(url.startsWith(Const.PREFIX_SDCARD)){
+        //     url=url.replace(Const.PREFIX_SDCARD,"file://");
+        // }
         if(MusicService.isRun()){
             MusicService.getService().stop();
         }
@@ -81,9 +83,9 @@ public class WXMusicModule extends WXModuleBase {
     @JSMethod
     public void getUrl(JSCallback callback){
         String  url= MusicService.getService().url+"";
-        if(url.startsWith("file://")){
-            url= url.replace("file://",Const.PREFIX_SDCARD);
-        }
+        // if(url.startsWith("file://")){
+        //     url= url.replace("file://",Const.PREFIX_SDCARD);
+        // }
         HashMap m=new HashMap();
         m.put("url",url);
         callback.invoke(m);
