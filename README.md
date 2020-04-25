@@ -1,47 +1,6 @@
-# Android Eros plugin Sample
+# Android Eros plugin Audio
 
-** Android 插件Sample **
+** eros weex 音频播放插件，直接从 weexplus 的插件(https://github.com/farwolf2010/record)迁移过来 **
 
-* 插件 简单封装了一个 Module   helloplugin  一个简单的弹出Toast操作。
-
-* 使用
-
-    ```
-	var helloplugin = weex.requireModule('helloplugin')
-	```
-
-    ```js
-	helloplugin.hello()
-
-    ```
-
-* 插件的封装方法
-
-* 1、直接在项目中new 一个Module  如图：
-图1![](https://raw.githubusercontent.com/myliuyx/source/master/plugin_new_1.jpg)
-
-图2![](https://raw.githubusercontent.com/myliuyx/source/master/plugin_new_2.jpg)
-
-图3![](https://raw.githubusercontent.com/myliuyx/source/master/plugin_new_3.jpg)
-
-图4![](https://raw.githubusercontent.com/myliuyx/source/master/plugin_new_4.jpg)
-
-
-* 2、将新创建的 Module 依赖进项目 如图。
-图5![](https://raw.githubusercontent.com/myliuyx/source/master/plugin_new_5.jpg)
-
-* 3、修改 Module 的 build.gradle 文件。
-
-一定要依赖：
-      ``` java
-        implementation 'com.github.bmfe.eros-nexus:nexus:1.0.1'
-      ```
-  图6![](https://raw.githubusercontent.com/myliuyx/source/master/plugin_new_6.png)  
-  
-> 具体可参考如图6， 也可以下载此sample 查看，完事儿以后点击右上角 sync now 等待完成即可.
-> implementation 'com.github.bmfe.eros-nexus:nexus:1.0.1', 库
-  依赖请参考最新版本 自行修改。
-  
- * 4、后面您可以随意写您的插件逻辑了， 集体 的注册可以参考 `sample` 中的 ErosPluginSample.
-
-
+最开始选框架的时候发现有 eros,weexplus 和 eeui 等，最后随便选了 eros，不过开发到后期发现 eros 的插件相对比较少，weexplus 在几个比较重要的场合都有相应的插件，比如退出 app，打开 office，页面预加载等，当然还有音频播放和录音，音频进度控制等。。。感觉都应该弃坑了
+eros 没有全局 css，每个页面，甚至于每个组件都无法公用 css。不过整体来看也无太大影响。如果现在去换框架确实太费劲。所以暂且先把相关的插件迁移过来。
