@@ -5,8 +5,10 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 
+
+import com.eros.framework.BMWXApplication;
 import com.farwolf.audio.event.AudioEvent;
-import com.farwolf.weex.app.WeexApplication;
+//import com.farwolf.weex.app.WeexApplication;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -58,7 +60,7 @@ public class MusicService  {
             if (mPlayer != null) {
                 release();
             }
-            mPlayer=MediaPlayer.create(WeexApplication.getInstance(),Uri.parse(url));
+            mPlayer=MediaPlayer.create(BMWXApplication.getWXApplication(),Uri.parse(url));
 //            mPlayer.setDataSource(url);
 //            mPlayer.prepare();
             if(autoplay){

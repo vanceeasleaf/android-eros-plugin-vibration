@@ -2,17 +2,14 @@ package com.farwolf.audio.module;
 
 import android.content.Intent;
 
+import com.alibaba.weex.plugin.annotation.WeexModule;
+import com.eros.framework.activity.AbstractWeexActivity;
 import com.farwolf.audio.event.AudioEvent;
 import com.farwolf.audio.service.BackService;
 import com.farwolf.audio.service.MusicService;
-// import com.farwolf.weex.annotation.WeexModule;
-import com.alibaba.weex.plugin.annotation.WeexModule;
-import com.taobao.weex.common.WXModule;
-// import com.farwolf.weex.base.WXModuleBase;
-// import com.farwolf.weex.util.Const;
-// import com.farwolf.weex.util.Weex;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
+import com.taobao.weex.common.WXModule;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -20,6 +17,11 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.Timer;
+
+// import com.farwolf.weex.annotation.WeexModule;
+// import com.farwolf.weex.base.WXModuleBase;
+// import com.farwolf.weex.util.Const;
+// import com.farwolf.weex.util.Weex;
 
 @WeexModule(name = "audio")
 public class WXMusicModule extends WXModule { // WXModuleBase
@@ -94,7 +96,7 @@ public class WXMusicModule extends WXModule { // WXModuleBase
 
     @JSMethod
     public void seek(final int msec){
-        getActivity().runOnUiThread(new Runnable() {
+        ((AbstractWeexActivity) mWXSDKInstance.getContext()).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 MusicService.getService().seek(msec);
