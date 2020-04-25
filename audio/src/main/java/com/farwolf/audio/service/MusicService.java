@@ -4,16 +4,16 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
-
-import com.eros.framework.BMWXApplication;
 import com.farwolf.audio.event.AudioEvent;
-//import com.farwolf.weex.app.WeexApplication;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+//import com.farwolf.weex.app.WeexApplication;
 
 public class MusicService  {
 
@@ -60,11 +60,16 @@ public class MusicService  {
             if (mPlayer != null) {
                 release();
             }
-            mPlayer=MediaPlayer.create(BMWXApplication.getWXApplication(),Uri.parse(url));
-//            mPlayer.setDataSource(url);
-//            mPlayer.prepare();
+//            Log.d("xxx", "setUrl: "+url);
+//            mPlayer=MediaPlayer.create(BMWXApplication.getWXApplication(),Uri.parse(url));
+            mPlayer=new MediaPlayer();
+
+            mPlayer.setDataSource(url);
+            mPlayer.prepare(); 
+            // Log.d("yyy", "setUrl: "+Uri.parse(url));
             if(autoplay){
                 play();
+
             }
 
         }
